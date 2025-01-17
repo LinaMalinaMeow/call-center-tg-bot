@@ -11,7 +11,10 @@ def init_bot():
 
     @bot.message_handler()
     def echo_message(message):
-        response = generate_response(prompt=message.text)
+        user_id = message.from_user.id
+
+        response = generate_response(prompt=message.text, user_id=user_id)
+
         bot.reply_to(message, response)
 
     bot.infinity_polling()

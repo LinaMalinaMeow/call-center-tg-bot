@@ -19,10 +19,13 @@ class MessagesHistory:
                 'content': message,
             }]
 
-
-
     def get_user_history(self, user_id):
         user_history = self.messagesHistory.get(user_id)
         return user_history
+    
+    def clear_user_history(self, user_id):
+        current_user_history = self.get_user_history(user_id)
+
+        self.messagesHistory[user_id] = current_user_history[:1]
     
 MessageHistoryInstance = MessagesHistory()
